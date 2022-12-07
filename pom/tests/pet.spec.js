@@ -102,24 +102,14 @@ test('should create a bug report', async ({ request, baseURL }) => {
   expect(pending.ok()).toBeTruthy();
   expect(pending.status()).toBe(200);
   console.log(await pending.json());
-  /*
-  expect(await pending.json()).toEqual(expect.objectContaining({
-    "id": 900010,
-    "category": {
-        "id": 2,
-        "name": "Dogs and puppies - 900010"
-    },
-    "name": "doggies",
-    "photoUrls": [
-        "string"
-    ],
-    "tags": [
-        {
-            "id": 1,
-            "name": "Home"
-        }
-    ],
-    "status": "available"
-  })); */
 
+  expect(await pending.json()).toContain(expect.objectContaining({
+        id: 900010,
+        category: { id: 2, name: 'Dogs and puppies - 900010 - Update worked' },
+        name: 'doggies',
+        photoUrls: [ 'www.mydogs.io/900010' ],
+        tags: [ [Object], [Object] ],
+        status: 'pending'
+    }));
+    console.log('Element was Found');
 });
