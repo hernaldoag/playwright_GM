@@ -45,6 +45,7 @@ const config = {
 
     // All requests we send go to this API endpoint.
     baseURL: 'https://petstore.swagger.io/v2',
+
     extraHTTPHeaders: {
       // We set this header per GitHub guidelines.
       'Accept': 'application/json',

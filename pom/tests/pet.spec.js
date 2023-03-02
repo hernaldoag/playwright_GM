@@ -5,10 +5,10 @@ const USER = 'github-username';
 test('should create a bug report', async ({ request, baseURL }) => {
   const newPet = await request.post(`${baseURL}/pet`, {
     data: {
-            "id": 900010,
+            "id": 900020,
             "category": {
               "id": 2,
-              "name": "Dogs and puppies - 900010"
+              "name": "Dogs and puppies - 900020"
             },
             "name": "doggies",
             "photoUrls": [
@@ -26,13 +26,13 @@ test('should create a bug report', async ({ request, baseURL }) => {
   expect(newPet.ok()).toBeTruthy();
 
 
-  const pets = await request.get(`${baseURL}/pet/900010`);
+  const pets = await request.get(`${baseURL}/pet/900020`);
   expect(pets.ok()).toBeTruthy();
   expect(await pets.json()).toEqual(expect.objectContaining({
-    "id": 900010,
+    "id": 900020,
     "category": {
         "id": 2,
-        "name": "Dogs and puppies - 900010"
+        "name": "Dogs and puppies - 900020"
     },
     "name": "doggies",
     "photoUrls": [
@@ -48,14 +48,14 @@ test('should create a bug report', async ({ request, baseURL }) => {
   }));
 
   const uppets = await request.put(`${baseURL}/pet`, {
-    data:{"id": 900010,
+    data:{"id": 900020,
     "category": {
         "id": 2,
-        "name": "Dogs and puppies - 900010 - Update worked"
+        "name": "Dogs and puppies - 900020 - Update worked"
     },
     "name": "doggies",
     "photoUrls": [
-        "www.mydogs.io/900010"
+        "www.mydogs.io/900020"
     ],
     "tags": [
         {
@@ -72,14 +72,14 @@ test('should create a bug report', async ({ request, baseURL }) => {
   });
   expect(uppets.ok()).toBeTruthy();
   expect(await uppets.json()).toEqual(expect.objectContaining({
-    "id": 900010,
+    "id": 900020,
     "category": {
         "id": 2,
-        "name": "Dogs and puppies - 900010 - Update worked"
+        "name": "Dogs and puppies - 900020 - Update worked"
     },
     "name": "doggies",
     "photoUrls": [
-        "www.mydogs.io/900010"
+        "www.mydogs.io/900020"
     ],
     "tags": [
         {
@@ -104,10 +104,10 @@ test('should create a bug report', async ({ request, baseURL }) => {
   console.log(await pending.json());
 
   expect(await pending.json()).toContain(expect.objectContaining({
-        id: 900010,
-        category: { id: 2, name: 'Dogs and puppies - 900010 - Update worked' },
+        id: 900020,
+        category: { id: 2, name: 'Dogs and puppies - 900020 - Update worked' },
         name: 'doggies',
-        photoUrls: [ 'www.mydogs.io/900010' ],
+        photoUrls: [ 'www.mydogs.io/900020' ],
         tags: [ [Object], [Object] ],
         status: 'pending'
     }));
